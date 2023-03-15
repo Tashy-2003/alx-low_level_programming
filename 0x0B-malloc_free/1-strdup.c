@@ -1,30 +1,29 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * str_concat -  returns a pointer to a newly allocated space
- * in memory, which contains a copy of the string given as a param.
- * @str: This is the input string
- * Return: function returns a pointer to the duplicated string.
+ * _strdup - copy the string given to a newly allocated space in memory
+ * @str: string to copy
+ * Return: returns a pointer to the copy, or NULL if it fails
  */
 char *_strdup(char *str)
 {
-	char *s;
-	int a, b;
+	char *ptr;
+	unsigned int x, len;
 
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 
-	for (a = 0; str[a] != '\0'; a++);
-	s = (char *)  malloc((a + 1) * sizeof(char));
+	for (len = 0; str[len]; len++)
+		;
+	len++;
+	ptr = malloc(len * sizeof(char));
 
-	if (s == NULL)
+	if (!ptr)
 		return (NULL);
 
-	for (b = 0; b < a ; b++)
-		s[b] = str[b];
+	for (x = 0; x <= len; x++)
+		ptr[x] = str[x];
 
-	s[a + 1] = '\0';
-	return (s);
+	return (ptr);
 }
